@@ -17,9 +17,20 @@ form input {
   height: 50px;
   width: 100%;
   border: none;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid green;
+  color: white;
+  font-size: clamp(17px, 1.2vw, 50px);
 }
 
 input::placeholder {
   font-size: clamp(17px, 1.2vw, 50px);
+}
+
+input:hover {
+  border-bottom: 2px solid blue;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 2px solid blue;
 }

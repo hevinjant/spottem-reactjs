@@ -1,6 +1,6 @@
 .navbar {
   z-index: 2;
-  position: sticky;
+  position: fixed;
   top: 0;
   background-color: black;
   width: 100%;
@@ -53,7 +53,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  margin-top: 70px;
+  margin-top: 75px;
   background-color: black;
 }
 
