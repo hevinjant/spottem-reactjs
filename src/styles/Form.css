@@ -1,0 +1,25 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: clamp(250px, 20vw, 500px);
+  height: auto;
+  padding: 10px;
+}
+
+form label {
+  display: none;
+  color: white;
+  font-size: 1vw;
+}
+
+form input {
+  background-color: transparent;
+  height: 50px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+input::placeholder {
+  font-size: clamp(17px, 1.2vw, 50px);
+}
