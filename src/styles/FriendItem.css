@@ -1,0 +1,31 @@
+.friend-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: auto;
+  width: 20vw;
+  border-bottom: 1px solid var(--darker-gray);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+  padding: 1px;
+}
+
+.user-info .userdp {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.user-info .name {
+  color: var(--lightest-gray);
+  font-size: clamp(15px, 1vw, 25px);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-left: 10px;
+}
