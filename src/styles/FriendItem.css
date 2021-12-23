@@ -8,21 +8,22 @@
   border-bottom: 1px solid var(--darker-gray);
 }
 
-.user-info {
+.friend-item .user-info {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: auto;
   padding: 1px;
+  margin: 10px;
 }
 
-.user-info .userdp {
+.friend-item .user-info .userdp {
   height: 40px;
   width: 40px;
   border-radius: 50%;
 }
 
-.user-info .name {
+.friend-item .user-info .name {
   color: var(--lightest-gray);
   font-size: clamp(15px, 1vw, 25px);
   font-weight: 700;

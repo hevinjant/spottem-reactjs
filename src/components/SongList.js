@@ -7,6 +7,7 @@ function SongList({ friends }) {
     <div className="song-list">
       <div className="song-list-container">
         {friends.map((friend, key) => {
+          console.log("Song-List", friends);
           return <SongItem key={key} friend={friend} />;
         })}
       </div>

@@ -1,0 +1,39 @@
+.reaction-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.reaction-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reaction-info text {
+  color: var(--lightest-gray);
+}
+
+.reaction-item img {
+  width: 10vw;
+  height: 10vw;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+
+.reaction-item .name {
+  color: var(--lightest-gray);
+  font-weight: 700;
+  font-size: clamp(15px, 0.9vw, 25px);
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.reaction-item .artist {
+  color: var(--lightest-gray);
+  font-size: clamp(12px, 0.6vw, 22px);
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+}

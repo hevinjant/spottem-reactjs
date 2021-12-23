@@ -1,0 +1,25 @@
+.activity {
+  background-color: var(--darkest-gray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 55px;
+  overflow: hidden; /* to make the page unscrollable */
+}
+
+.activity-left {
+  background-color: gray;
+}
+
+.activity .activity-right {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  overflow-y: scroll; /* to make the div scrollable */
+}
+
+.activity .activity-right::-webkit-scrollbar {
+  display: none; /* to hide scroll bar in Safari and Chrome */
+}

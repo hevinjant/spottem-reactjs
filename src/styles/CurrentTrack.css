@@ -1,0 +1,65 @@
+.current-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.update {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.update text {
+  color: white;
+  font-size: clamp(15px, 1.2vw, 20px);
+}
+
+.update button {
+  background-color: green;
+  color: white;
+  width: 8vw;
+  height: 25px;
+  margin: 8px;
+  border: none;
+  border-radius: 2px;
+}
+
+.update button:hover {
+  background-color: blue;
+}
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  color: var(--lightest-gray);
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.song-info img {
+  width: 80%;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.song-name {
+  color: var(--lightest-gray);
+  font-weight: 700;
+  font-size: clamp(15px, 1.1vw, 20px);
+  letter-spacing: 1px;
+  margin-bottom: 1px;
+}
+
+.artist {
+  color: var(--lightest-gray);
+  font-size: clamp(12px, 0.8vw, 17px);
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+}

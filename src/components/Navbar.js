@@ -13,13 +13,15 @@ function Navbar() {
     <div className="navbar">
       <div className="navbar-left" id={showLinks ? "show" : "hide"}>
         <div className="hiddenLinks">
-          <Link to="/">Home</Link>
-          <Link to="/">About</Link>
+          <Link to="/home">Home</Link>
+          <Link to="/activity">Activity</Link>
+          <Link to="/about">About</Link>
         </div>
       </div>
       <div className="navbar-right">
-        <Link to="/">Home</Link>
-        <Link to="/">About</Link>
+        <Link to="/home">Home</Link>
+        <Link to="/activity">Activity</Link>
+        <Link to="/about">About</Link>
         <button onClick={toggleNavbar}>Menu Icon</button>
       </div>
     </div>
