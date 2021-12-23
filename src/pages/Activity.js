@@ -2,7 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ReactionItem from "../components/ReactionItem";
+import SongHistory from "../components/SongHistory";
 import "../styles/Activity.css";
+import { backendEndpoint } from "../Data";
 
 const dummyData = [
   {
@@ -258,7 +260,7 @@ function Activity() {
   async function fetchReactionsHistory() {
     try {
       const response = await axios.get(
-        "http://localhost:8080/http://10.20.5.89:5001/reactions"
+        "http://localhost:8080/" + backendEndpoint + "/reactions"
       );
       console.log("ACTIVITY RESPONSE: ", response.data["reactions"]);
       return response.data["reactions"];
@@ -270,11 +272,19 @@ function Activity() {
 
   return (
     <div className="activity">
-      <div className="activity-left"></div>
+      <div className="activity-left">
+        <h1>Songs you have listened</h1>
+        <div className="activity-left-container">
+          <SongHistory />
+        </div>
+      </div>
       <div className="activity-right">
-        {history.map((reaction, key) => {
-          return <ReactionItem key={key} reaction={reaction} />;
-        })}
+        <h1>Recent activity</h1>
+        <div className="activity-right-container">
+          {history.map((reaction, key) => {
+            return <ReactionItem key={key} reaction={reaction} />;
+          })}
+        </div>
       </div>
     </div>
   );

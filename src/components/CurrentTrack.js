@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/CurrentTrack.css";
+import { backendEndpoint } from "../Data";
 
 const dummyData = {
   album: "",
@@ -31,7 +32,9 @@ function CurrentTrack() {
   async function fetchCurrentTrack() {
     try {
       const response = await axios.get(
-        "http://localhost:8080/http://10.20.5.89:5001/current-track/hevin-jant@gmail-com"
+        "http://localhost:8080/" +
+          backendEndpoint +
+          "/current-track/hevin-jant@gmail-com"
       );
       return response;
     } catch (error) {
@@ -48,7 +51,6 @@ function CurrentTrack() {
         setIsListening(true);
       }
     });
-    //console.log("updating...");
   }
 
   return (

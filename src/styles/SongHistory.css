@@ -1,0 +1,56 @@
+.song-history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.song-history-list {
+  width: auto;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 25px;
+  margin-bottom: 100px;
+}
+
+@media only screen and (max-width: 1300px) {
+  .song-history-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .song-history-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.song-history-list .song-elements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px;
+}
+
+.song-history-list .song-elements img {
+  border-radius: 20px;
+  height: clamp(200px, 15vw, 300px);
+  width: clamp(200px, 15vw, 300px);
+  margin-bottom: 10px;
+}
+
+.song-history-list .song-elements .name {
+  color: var(--lightest-gray);
+  font-weight: 700;
+  font-size: clamp(15px, 1vw, 21px);
+  letter-spacing: 1px;
+}
+
+.song-history-list .song-elements .artist {
+  color: var(--lightest-gray);
+  font-size: clamp(12px, 0.9vw, 18px);
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+}

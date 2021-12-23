@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/SongItem.css";
+import SongElements from "./SongElements";
 
 function SongItem({ friend }) {
   return (
@@ -8,9 +9,11 @@ function SongItem({ friend }) {
         <img className="userdp" src={friend.user_dp} alt="no image" />
         <text className="name">{friend.name} listens to</text>
       </div>
-      <img src={friend.current_track.song_image_url} alt="no image" />
-      <text className="song-name">{friend.current_track.song_name}</text>
-      <text className="artist">by {friend.current_track.artist}</text>
+      <SongElements
+        song_image_url={friend.current_track.song_image_url}
+        song_name={friend.current_track.song_name}
+        artist={friend.current_track.artist}
+      />
     </div>
   );
 }

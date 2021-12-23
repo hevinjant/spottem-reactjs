@@ -5,6 +5,7 @@ import SongList from "../components/SongList";
 import FriendsList from "../components/FriendsList";
 import CurrentTrack from "../components/CurrentTrack";
 import "../styles/Home.css";
+import { backendEndpoint } from "../Data";
 
 const dummyData = [
   {
@@ -417,7 +418,9 @@ function Home() {
   async function fetchAllfriends() {
     try {
       const response = await axios.get(
-        "http://localhost:8080/http://10.20.5.89:5001/user/friends/hevin-jant@gmail-com"
+        "http://localhost:8080/" +
+          backendEndpoint +
+          "/user/friends/hevin-jant@gmail-com"
       );
       console.log("HOME RESPONSE:", response.data["friends"]);
       return response.data["friends"];

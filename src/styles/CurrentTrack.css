@@ -20,9 +20,10 @@
 .update button {
   background-color: green;
   color: white;
+  font-weight: 700;
   width: 8vw;
   height: 25px;
-  margin: 8px;
+  margin: 15px;
   border: none;
   border-radius: 2px;
 }
