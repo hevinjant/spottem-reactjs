@@ -32,10 +32,14 @@
   background-color: blue;
 }
 
-.song-info {
+.current-track #show .song-info-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.current-track #hide .song-info-container {
+  display: none;
 }
 
 .label {

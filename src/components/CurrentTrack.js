@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "../styles/CurrentTrack.css";
+import SongElements from "./SongElements";
 import { backendEndpoint } from "../Data";
+import "../styles/CurrentTrack.css";
 
 const dummyData = {
   album: "",
@@ -60,10 +61,14 @@ function CurrentTrack() {
         <button onClick={updateCurrentTrack}>Update</button>
       </div>
       <div className="song-info" id={isListening ? "show" : "hide"}>
-        <text className="label">You listen to</text>
-        <img src={currentTrack.image_url} alt="no image" />
-        <text className="song-name">{currentTrack.track_name}</text>
-        <text className="artist">by {currentTrack.artists}</text>
+        <div className="song-info-container">
+          <text className="label">You listen to</text>
+          <SongElements
+            song_image_url={currentTrack.image_url}
+            song_name={currentTrack.track_name}
+            artist={currentTrack.artists}
+          />
+        </div>
       </div>
     </div>
   );
