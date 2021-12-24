@@ -1,12 +1,13 @@
 import React from "react";
 import "../styles/SongItem.css";
 import SongElements from "./SongElements";
+import DefaultPic from "../assets/defaultPic.png";
 
 function SongItem({ friend }) {
   return (
     <div className="song-item">
       <div className="user-info">
-        <img className="userdp" src={friend.user_dp} alt="no image" />
+        <img className="userdp" src={friend.user_dp} alt="no img" />
         <text className="name">{friend.name} listens to</text>
       </div>
       <SongElements

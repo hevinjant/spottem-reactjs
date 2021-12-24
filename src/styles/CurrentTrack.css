@@ -14,7 +14,7 @@
   position: fixed;
   height: 100%;
   width: 15vw;
-  filter: blur(10px);
+  filter: blur(15px);
   opacity: 50%;
 }
 
@@ -40,7 +40,7 @@
   height: 25px;
   margin: 15px;
   border: none;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 .update button:hover {
