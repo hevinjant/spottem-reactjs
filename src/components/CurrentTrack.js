@@ -27,8 +27,6 @@ function CurrentTrack({ token }) {
 
     fetchCurrentTrack().then((result) => {
       if (result) {
-        console.log("NCT: ", result);
-
         setCurrentTrack(result);
         setIsListening(true);
         pushCurrentTrackToDatabase(result);
@@ -49,6 +47,7 @@ function CurrentTrack({ token }) {
       for (const artist of songArtists) {
         artistsNames += artist["name"] + ", ";
       }
+      artistsNames = artistsNames.slice(0, -2); // to remove the last comma and space
       const songImageUrl = result["item"]["album"]["images"][0]["url"];
       const songLink = result["item"]["external_urls"]["spotify"];
 

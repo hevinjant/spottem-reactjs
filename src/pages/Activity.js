@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 import ReactionItem from "../components/ReactionItem";
 import SongHistory from "../components/SongHistory";
 import "../styles/Activity.css";
@@ -271,22 +272,25 @@ function Activity() {
   }
 
   return (
-    <div className="activity">
-      <div className="activity-left">
-        <h1>Songs you have listened</h1>
-        <div className="activity-left-container">
-          <SongHistory />
+    <>
+      <Navbar />
+      <div className="activity">
+        <div className="activity-left">
+          <h1>Songs you have listened</h1>
+          <div className="activity-left-container">
+            <SongHistory />
+          </div>
+        </div>
+        <div className="activity-right">
+          <h1>Recent activity</h1>
+          <div className="activity-right-container">
+            {history.map((reaction, key) => {
+              return <ReactionItem key={key} reaction={reaction} />;
+            })}
+          </div>
         </div>
       </div>
-      <div className="activity-right">
-        <h1>Recent activity</h1>
-        <div className="activity-right-container">
-          {history.map((reaction, key) => {
-            return <ReactionItem key={key} reaction={reaction} />;
-          })}
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
 

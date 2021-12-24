@@ -83,8 +83,9 @@
   color: var(--lightest-gray);
   font-weight: 700;
   font-size: clamp(15px, 1vw, 20px);
+  text-align: center;
   letter-spacing: 1px;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 .current-track .artist {

@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import MenuIcon from "@mui/icons-material/Menu";
 import "../styles/Navbar.css";
 
 const dummyData = {};
@@ -11,16 +13,33 @@ const SPOTIFY_GET_USER_PROFILE_URL = "https://api.spotify.com/v1/me";
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
   const [user, setUser] = useState({});
-  const token = "";
 
-  useEffect(() => {});
+  //const token = useSelector((state) => state.access_token); // using redux
+  const token = localStorage.getItem("access_token"); // using localStorage
+  // const userName = localStorage.getItem("user_display_name");
+  // const userImageUrl = localStorage.getItem("user_image_url");
+  // const userName = useSelector((state) => state.display_name);
+  // const userImageUrl = useSelector((state) => state.image_url);
+
+  useEffect(() => {
+    fetchUser().then((result) => {
+      if (result) {
+        setUser(result);
+      }
+    });
+  }, []);
 
   async function fetchUser() {
     try {
       const response = await axios.get(SPOTIFY_GET_USER_PROFILE_URL, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      return response;
+      const result = response.data;
+      const user = {
+        display_name: result["display_name"],
+        user_image_url: result["images"][0]["url"],
+      };
+      return user;
     } catch (error) {
       console.log(error);
       return false;
@@ -34,6 +53,10 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="navbar-left" id={showLinks ? "show" : "hide"}>
+        <div className="user-display">
+          <img src={user.user_image_url} alt="no img" />
+          <text>{user.display_name}</text>
+        </div>
         <div className="hiddenLinks">
           <Link to="/home">Home</Link>
           <Link to="/activity">Activity</Link>
@@ -44,7 +67,9 @@ function Navbar() {
         <Link to="/home">Home</Link>
         <Link to="/activity">Activity</Link>
         <Link to="/about">About</Link>
-        <button onClick={toggleNavbar}>Menu Icon</button>
+        <button onClick={toggleNavbar}>
+          <MenuIcon />
+        </button>
       </div>
     </div>
   );

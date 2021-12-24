@@ -15,7 +15,26 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+}
+
+.navbar-left .user-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+  margin-left: 15px;
+}
+
+.navbar-left .user-display img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.navbar-left .user-display text {
+  color: white;
+  font-weight: 700;
+  margin-left: 10px;
 }
 
 .navbar-right {
@@ -68,6 +87,11 @@
 @media only screen and (max-width: 1000px) {
   .navbar .navbar-right a {
     display: none;
+  }
+
+  .navbar .navbar-right {
+    justify-content: flex-end;
+    padding-right: 50px;
   }
 
   .navbar .navbar-right button {

@@ -21,8 +21,31 @@
 }
 
 .login img {
-  height: 20vw;
-  width: 20vw;
+  height: clamp(250px, 20vw, 400px);
+  width: clamp(250px, 20vw, 400px);
+}
+
+.login .success-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login .success-login text {
+  color: white;
+  font-size: clamp(15px, 1.1vw, 20px);
+  margin-bottom: 15px;
+}
+
+.login button {
+  background-color: green;
+  color: white;
+  font-size: clamp(15px, 1.1vw, 20px);
+  border: none;
+  width: auto;
+  height: 30px;
+  padding: 5px 8px 5px 8px;
+  border-radius: 2.5px;
 }
 
 .login button:hover {

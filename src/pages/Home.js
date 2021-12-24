@@ -1,12 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 import SongList from "../components/SongList";
 import FriendsList from "../components/FriendsList";
 import CurrentTrack from "../components/CurrentTrack";
-import "../styles/Home.css";
 import { backendEndpoint } from "../Data";
+import { useSelector } from "react-redux";
+import "../styles/Home.css";
 
 const dummyData = [
   {
@@ -405,13 +406,12 @@ const dummyData = [
 
 function Home() {
   const [friends, setfriends] = useState([]);
-  //const token = useLocation().state;
-  const token =
-    "BQA1wjTjzjhiAxXxFVphqOa6SRT2Ot3Yh6jAICbOS9XCWXZxtE6OkgrQ9MrWA2OaRpnRCqsfuTgr-gBr0D89JbQ9bjxm0OqSzDXfGu7LWwOwLdEvBN75bbpmB4Nm3IgZvJMhtN8L82y1UcR9JBIOtG_7CgAAcyo8qko_pprZM8cJ-1l-vI-Ri35gpgSZ8TfSEcJf2U_LUET54PAd";
+  //const token = useLocation().state; // using useNavigate
+  //const token = useSelector((state) => state.access_token); // using redux
+  const token = localStorage.getItem("access_token"); // using localStorage
 
   useEffect(() => {
     //setfriends(dummyData);
-    console.log("TOKEN IN HOME", token);
 
     fetchAllfriends().then((result) => {
       if (result) {
@@ -427,7 +427,6 @@ function Home() {
           backendEndpoint +
           "/user/friends/hevin-jant@gmail-com"
       );
-      console.log("HOME RESPONSE:", response.data["friends"]);
       return response.data["friends"];
     } catch (error) {
       console.log(error);
@@ -436,17 +435,20 @@ function Home() {
   }
 
   return (
-    <div className="home">
-      <div className="home-left">
-        <CurrentTrack token={token} />
+    <>
+      <Navbar />
+      <div className="home">
+        <div className="home-left">
+          <CurrentTrack token={token} />
+        </div>
+        <div className="home-mid">
+          <SongList friends={friends} />
+        </div>
+        <div className="home-right">
+          <FriendsList friends={friends} />
+        </div>
       </div>
-      <div className="home-mid">
-        <SongList friends={friends} />
-      </div>
-      <div className="home-right">
-        <FriendsList friends={friends} />
-      </div>
-    </div>
+    </>
   );
 }
 
