@@ -1,11 +1,20 @@
 import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import Form from "../components/Form.js";
 import SpottemLogo from "../assets/spottemLogo.png";
 import axios from "axios";
 import "../styles/Login.css";
 import Background from "../assets/musicbg2.jpg";
 
+// Spotify Oauth
+import { SpotifyApiContext } from "react-spotify-api";
+import { SpotifyAuth, Scopes } from "react-spotify-auth";
+import "react-spotify-auth/dist/index.css";
+
 function Login() {
+  const [token, setToken] = useState("");
+
   let useremail = "";
   const localHostURL = "http://localhost:8080/http://10.20.5.89:5001/login";
   const herokuURL =
@@ -36,13 +45,32 @@ function Login() {
     <div className="login" style={{ backgroundImage: `url(${Background})` }}>
       <div className="login-inner-container">
         <img src={SpottemLogo}></img>
-        <h1>Enter your Spotify account email to continue</h1>
-        <Form
-          formLabel="Email"
-          placeholder="Enter email..."
-          handleFormSubmit={handleSubmitUseremail}
-        />
-        <button>Log In</button>
+
+        <div className="spotify-oauth">
+          {token ? (
+            <SpotifyApiContext.Provider value={token}>
+              {/* Your Spotify Code here */}
+              {console.log("TOKEN IN LOGIN:", token)}
+              <Link to={{ pathname: "/home", state: { token: token } }}>
+                Continue to app
+              </Link>
+            </SpotifyApiContext.Provider>
+          ) : (
+            // Display the login page
+            <SpotifyAuth
+              redirectUri="http://localhost:3000/callback"
+              clientID="8ad10722bf9f4c539591db26b5ae4abc"
+              scopes={[
+                Scopes.userReadPrivate,
+                Scopes.userReadEmail,
+                Scopes.userReadCurrentlyPlaying,
+                Scopes.userLibraryRead,
+                Scopes.playlistReadPrivate,
+              ]} // either style will work
+              onAccessToken={(token) => setToken(token)}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

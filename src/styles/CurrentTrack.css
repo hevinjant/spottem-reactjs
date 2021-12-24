@@ -2,13 +2,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: blur(5px);
+}
+
+.current-track .background {
+  z-index: 0;
+  position: fixed;
+  height: 100%;
+  width: 15vw;
+  filter: blur(10px);
+  opacity: 50%;
 }
 
 .update {
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 35px;
   margin-bottom: 20px;
 }
 
@@ -32,6 +47,10 @@
   background-color: blue;
 }
 
+.current-track .song-info {
+  z-index: 1;
+}
+
 .current-track #show .song-info-container {
   display: flex;
   flex-direction: column;
@@ -48,23 +67,29 @@
   margin-bottom: 5px;
 }
 
-.song-info img {
+.current-track .song-info img {
   width: 80%;
   border-radius: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
-.song-name {
+.current-track .song-elements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.current-track .name {
   color: var(--lightest-gray);
   font-weight: 700;
-  font-size: clamp(15px, 1.1vw, 20px);
+  font-size: clamp(15px, 1vw, 20px);
   letter-spacing: 1px;
-  margin-bottom: 1px;
+  margin-bottom: 3px;
 }
 
-.artist {
+.current-track .artist {
   color: var(--lightest-gray);
-  font-size: clamp(12px, 0.8vw, 17px);
+  font-size: clamp(12px, 0.7vw, 17px);
   letter-spacing: 1px;
   margin-bottom: 0px;
 }

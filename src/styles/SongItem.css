@@ -47,14 +47,14 @@
 .song-item .name {
   color: var(--lightest-gray);
   font-weight: 700;
-  font-size: clamp(15px, 1.2vw, 25px);
+  font-size: clamp(15px, 1vw, 25px);
   letter-spacing: 1px;
   margin-bottom: 5px;
 }
 
 .song-item .artist {
   color: var(--lightest-gray);
-  font-size: clamp(12px, 0.9vw, 22px);
+  font-size: clamp(12px, 0.8vw, 22px);
   letter-spacing: 1px;
   margin-bottom: 0px;
 }

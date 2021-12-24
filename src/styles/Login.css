@@ -20,26 +20,9 @@
   border-radius: 20px;
 }
 
-.login h1 {
-  color: white;
-  font-weight: 400;
-  font-size: clamp(20px, 1.7vw, 50px);
-}
-
 .login img {
-  height: 15vw;
-  width: 15vw;
-}
-
-.login button {
-  height: 50px;
-  width: clamp(250px, 20vw, 250px);
-  border-radius: 5px;
-  background-color: green;
-  color: white;
-  border: none;
-  font-size: clamp(20px, 1.7vw, 30px);
-  margin-top: 25px;
+  height: 20vw;
+  width: 20vw;
 }
 
 .login button:hover {

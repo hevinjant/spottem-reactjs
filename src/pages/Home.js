@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import SongList from "../components/SongList";
 import FriendsList from "../components/FriendsList";
@@ -404,9 +405,13 @@ const dummyData = [
 
 function Home() {
   const [friends, setfriends] = useState([]);
+  //const token = useLocation().state;
+  const token =
+    "BQA1wjTjzjhiAxXxFVphqOa6SRT2Ot3Yh6jAICbOS9XCWXZxtE6OkgrQ9MrWA2OaRpnRCqsfuTgr-gBr0D89JbQ9bjxm0OqSzDXfGu7LWwOwLdEvBN75bbpmB4Nm3IgZvJMhtN8L82y1UcR9JBIOtG_7CgAAcyo8qko_pprZM8cJ-1l-vI-Ri35gpgSZ8TfSEcJf2U_LUET54PAd";
 
   useEffect(() => {
     //setfriends(dummyData);
+    console.log("TOKEN IN HOME", token);
 
     fetchAllfriends().then((result) => {
       if (result) {
@@ -433,7 +438,7 @@ function Home() {
   return (
     <div className="home">
       <div className="home-left">
-        <CurrentTrack />
+        <CurrentTrack token={token} />
       </div>
       <div className="home-mid">
         <SongList friends={friends} />
