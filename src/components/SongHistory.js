@@ -11,7 +11,8 @@ function SongHistory() {
   useEffect(() => {
     fetchSongHistory().then((result) => {
       if (result) {
-        setSongHistory(result);
+        const reversedResult = result.reverse();
+        setSongHistory(reversedResult);
       }
     });
   });

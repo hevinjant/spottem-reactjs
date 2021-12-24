@@ -71,7 +71,18 @@ function CurrentTrack({ token }) {
 
   async function pushCurrentTrackToDatabase(newCurrentTrack) {
     // make POST request to the backend to insert the new current track
-    return false;
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/" +
+          backendEndpoint +
+          "/current-track/hevin-jant@gmail-com",
+        newCurrentTrack
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
 
   function updateCurrentTrack() {
@@ -79,6 +90,7 @@ function CurrentTrack({ token }) {
       if (result) {
         setCurrentTrack(result);
         setIsListening(true);
+        pushCurrentTrackToDatabase(result);
       }
     });
   }
