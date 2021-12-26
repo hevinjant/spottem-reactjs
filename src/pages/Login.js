@@ -12,7 +12,7 @@ import { SpotifyAuth, Scopes } from "react-spotify-auth";
 import "react-spotify-auth/dist/index.css";
 
 // Redux
-import store from "./store";
+import store from "../redux/store";
 
 const SPOTIFY_GET_USER_PROFILE_URL = "https://api.spotify.com/v1/me";
 
@@ -21,23 +21,19 @@ function Login() {
   const navigate = useNavigate();
 
   function handleClick() {
-    // fetchUserInfo().then((result) => {
-    //   if (result) {
-    //     // store user info in local storage
-    //     localStorage.setItem("user_display_name", result.display_name);
-    //     localStorage.setItem("user_email", result.email);
-    //     localStorage.setItem("user_image_url", result.user_image_url);
-    //     // store user info in redux store
-    //     store.dispatch({
-    //       type: "SET_USERINFO",
-    //       payload: {
-    //         display_name: result.display_name,
-    //         email: result.email,
-    //         image_url: result.user_image_url,
-    //       },
-    //     });
-    //   }
-    // });
+    fetchUserInfo().then((result) => {
+      if (result) {
+        // store user info in redux store, NOTE: Redux state is cleared when user refreshes the page.
+        store.dispatch({
+          type: "SET_USERINFO",
+          payload: {
+            display_name: result.display_name,
+            email: result.email,
+            image_url: result.user_image_url,
+          },
+        });
+      }
+    });
 
     // store access token in redux store
     // store.dispatch({
@@ -58,12 +54,12 @@ function Login() {
         headers: { Authorization: `Bearer ${token}` },
       });
       const result = response.data;
-      console.log("result:", result);
       const user = {
         display_name: result["display_name"],
         email: result["email"],
         user_image_url: result["images"][0]["url"],
       };
+      console.log("logged in user: ", user);
       return user;
     } catch (error) {
       console.log(error);

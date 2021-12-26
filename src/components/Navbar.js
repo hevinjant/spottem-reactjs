@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
+import store from "../redux/store";
 import "../styles/Navbar.css";
 
 const dummyData = {};
@@ -15,12 +16,19 @@ function Navbar() {
   const [user, setUser] = useState({});
 
   //const token = useSelector((state) => state.access_token); // using redux
-  const token = localStorage.getItem("access_token"); // using localStorage
-  // const userName = localStorage.getItem("user_display_name");
-  // const userImageUrl = localStorage.getItem("user_image_url");
-  // const userName = useSelector((state) => state.display_name);
-  // const userImageUrl = useSelector((state) => state.image_url);
+  //const token = localStorage.getItem("access_token"); // using localStorage
 
+  store.subscribe(() => {
+    const user = store.getState();
+    console.log("user:", user);
+    setUser({
+      userName: user.display_name,
+      userEmail: user.email,
+      userImage: user.image_url,
+    });
+  });
+
+  /*
   useEffect(() => {
     fetchUser().then((result) => {
       if (result) {
@@ -45,6 +53,7 @@ function Navbar() {
       return false;
     }
   }
+*/
 
   const toggleNavbar = () => {
     setShowLinks(!showLinks);
@@ -54,8 +63,8 @@ function Navbar() {
     <div className="navbar">
       <div className="navbar-left" id={showLinks ? "show" : "hide"}>
         <div className="user-display">
-          <img src={user.user_image_url} alt="no img" />
-          <text>{user.display_name}</text>
+          <img src={user.userImage} alt="no img" />
+          <text>{user.userName}</text>
         </div>
         <div className="hiddenLinks">
           <Link to="/home">Home</Link>
