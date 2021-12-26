@@ -14,7 +14,7 @@ import { SpotifyAuth, Scopes } from "react-spotify-auth";
 import "react-spotify-auth/dist/index.css";
 
 // Redux
-import store from "../redux/store";
+import { useDispatch } from "react-redux";
 import { setAccessToken, setUserInfo } from "../redux/action";
 
 const SPOTIFY_GET_USER_PROFILE_URL = "https://api.spotify.com/v1/me";
@@ -22,12 +22,13 @@ const SPOTIFY_GET_USER_PROFILE_URL = "https://api.spotify.com/v1/me";
 function Login() {
   const [token, setToken] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function handleClick() {
     fetchUserInfo().then((result) => {
       if (result) {
         // store user info in redux store, NOTE: Redux state is cleared when user refreshes the page.
-        store.dispatch(
+        dispatch(
           setUserInfo(result.display_name, result.email, result.user_image_url)
         );
         // store user info in local storage
