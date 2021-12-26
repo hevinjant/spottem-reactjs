@@ -1,10 +1,12 @@
+import { actionTypes } from "./action";
+
 function reducer(state = {}, action) {
-  if (action.type === "SET_ACCESSTOKEN") {
+  if (action.type === actionTypes.SET_ACCESS_TOKEN) {
     return {
       access_token: action.payload.access_token,
     };
   }
-  if (action.type === "SET_USERINFO") {
+  if (action.type === actionTypes.SET_USER_INFO) {
     return {
       display_name: action.payload.display_name,
       email: action.payload.email,

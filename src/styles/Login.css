@@ -40,7 +40,7 @@
 .login button {
   background-color: green;
   color: white;
-  font-size: clamp(15px, 1.1vw, 20px);
+  font-size: clamp(15px, 1.1vw, 17px);
   border: none;
   width: auto;
   height: 30px;

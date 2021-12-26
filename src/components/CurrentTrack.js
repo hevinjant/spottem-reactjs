@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SongElements from "./SongElements";
 import { backendEndpoint } from "../Data";
+import convertEmail from "../util.js";
 import "../styles/CurrentTrack.css";
 
 const SPOTIFY_GET_CURRENT_TRACK_URL =
@@ -21,6 +22,7 @@ const dummyData = {
 function CurrentTrack({ token }) {
   const [currentTrack, setCurrentTrack] = useState({});
   const [isListening, setIsListening] = useState(false);
+  const userEmail = convertEmail(localStorage.getItem("user_email"));
 
   useEffect(() => {
     //setCurrentTrack(dummyData);
@@ -52,12 +54,12 @@ function CurrentTrack({ token }) {
       const songLink = result["item"]["external_urls"]["spotify"];
 
       const newCurrentTrack = {
-        album: "",
-        artists: artistsNames,
-        email: "hevin-jant@gmail-com",
+        song_album: "",
+        song_artists: artistsNames,
+        email: userEmail,
         song_id: songId,
-        image_url: songImageUrl,
-        track_name: songName,
+        song_image_url: songImageUrl,
+        song_name: songName,
         song_url: songLink,
       };
 
@@ -75,7 +77,8 @@ function CurrentTrack({ token }) {
       const response = await axios.post(
         "http://localhost:8080/" +
           backendEndpoint +
-          "/current-track/hevin-jant@gmail-com",
+          "/current-track/" +
+          userEmail,
         newCurrentTrack
       );
       return response;
@@ -99,7 +102,7 @@ function CurrentTrack({ token }) {
     <div className="current-track">
       <div
         className="background"
-        style={{ backgroundImage: `url(${currentTrack.image_url})` }}
+        style={{ backgroundImage: `url(${currentTrack.song_image_url})` }}
       >
         HELLO
       </div>
@@ -111,9 +114,9 @@ function CurrentTrack({ token }) {
         <div className="song-info-container">
           <text className="label">You listen to</text>
           <SongElements
-            song_image_url={currentTrack.image_url}
-            song_name={currentTrack.track_name}
-            artist={currentTrack.artists}
+            song_image_url={currentTrack.song_image_url}
+            song_name={currentTrack.song_name}
+            artist={currentTrack.song_artists}
           />
         </div>
       </div>

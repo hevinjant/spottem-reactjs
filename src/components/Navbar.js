@@ -13,20 +13,25 @@ const SPOTIFY_GET_USER_PROFILE_URL = "https://api.spotify.com/v1/me";
 
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    userName: localStorage.getItem("user_name"),
+    userImage: localStorage.getItem("user_image_url"),
+  });
 
   //const token = useSelector((state) => state.access_token); // using redux
   //const token = localStorage.getItem("access_token"); // using localStorage
 
-  store.subscribe(() => {
-    const user = store.getState();
-    console.log("user:", user);
+  // using subscribe to listen to any changes in the store
+  const unsubscribe = store.subscribe(() => {
+    const state = store.getState();
     setUser({
-      userName: user.display_name,
-      userEmail: user.email,
-      userImage: user.image_url,
+      userName: state.display_name,
+      userEmail: state.email,
+      userImage: state.image_url,
     });
   });
+
+  unsubscribe();
 
   /*
   useEffect(() => {

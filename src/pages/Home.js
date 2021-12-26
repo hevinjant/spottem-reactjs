@@ -405,7 +405,7 @@ const dummyData = [
 ];
 
 function Home() {
-  const [friends, setfriends] = useState([]);
+  const [friends, setFriends] = useState([]);
   //const token = useLocation().state; // using useNavigate
   //const token = useSelector((state) => state.access_token); // using redux
   const token = localStorage.getItem("access_token"); // using localStorage
@@ -415,9 +415,14 @@ function Home() {
 
     fetchAllfriends().then((result) => {
       if (result) {
-        setfriends(result);
+        setFriends(result);
       }
     });
+
+    // clean up useEffect
+    return () => {
+      setFriends({});
+    };
   }, []);
 
   async function fetchAllfriends() {

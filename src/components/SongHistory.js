@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { backendEndpoint } from "../Data";
 import SongElements from "./SongElements";
+import convertEmail from "../util.js";
 import "../styles/SongHistory.css";
 
 function SongHistory() {
   const [songHistory, setSongHistory] = useState([]);
+  const userEmail = convertEmail(localStorage.getItem("user_email"));
 
   useEffect(() => {
     fetchSongHistory().then((result) => {
@@ -20,9 +22,7 @@ function SongHistory() {
   async function fetchSongHistory() {
     try {
       const response = await axios.get(
-        "http://localhost:8080/" +
-          backendEndpoint +
-          "/user/hevin-jant@gmail-com"
+        "http://localhost:8080/" + backendEndpoint + "/user/" + userEmail
       );
       return response.data["user"]["song_history"];
     } catch (error) {

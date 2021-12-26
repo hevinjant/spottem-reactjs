@@ -3,8 +3,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SpottemLogo from "../assets/spottemLogo.png";
 import axios from "axios";
-import "../styles/Login.css";
 import Background from "../assets/musicbg2.jpg";
+import { backendEndpoint } from "../Data";
+import convertEmail from "../util";
+import "../styles/Login.css";
 
 // Spotify Oauth
 import { SpotifyApiContext } from "react-spotify-api";
@@ -13,6 +15,7 @@ import "react-spotify-auth/dist/index.css";
 
 // Redux
 import store from "../redux/store";
+import { setAccessToken, setUserInfo } from "../redux/action";
 
 const SPOTIFY_GET_USER_PROFILE_URL = "https://api.spotify.com/v1/me";
 
@@ -24,24 +27,18 @@ function Login() {
     fetchUserInfo().then((result) => {
       if (result) {
         // store user info in redux store, NOTE: Redux state is cleared when user refreshes the page.
-        store.dispatch({
-          type: "SET_USERINFO",
-          payload: {
-            display_name: result.display_name,
-            email: result.email,
-            image_url: result.user_image_url,
-          },
-        });
+        store.dispatch(
+          setUserInfo(result.display_name, result.email, result.user_image_url)
+        );
+        // store user info in local storage
+        localStorage.setItem("user_name", result.display_name);
+        localStorage.setItem("user_email", result.email);
+        localStorage.setItem("user_image_url", result.user_image_url);
       }
     });
 
     // store access token in redux store
-    // store.dispatch({
-    //   type: "SET_ACCESSTOKEN",
-    //   payload: {
-    //     access_token: token,
-    //   },
-    // });
+    // store.dispatch(setAccessToken(token));
 
     localStorage.setItem("access_token", token); // store access token in user's local machine
     //navigate("/home", { state: token }); // passing data to another page using useNavigate
@@ -59,8 +56,22 @@ function Login() {
         email: result["email"],
         user_image_url: result["images"][0]["url"],
       };
-      console.log("logged in user: ", user);
+      insertUserToBackend(result);
       return user;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  async function insertUserToBackend(userData) {
+    try {
+      const email = convertEmail(userData["email"]);
+      const response = await axios.post(
+        "http://localhost:8080/" + backendEndpoint + "/user/" + email,
+        userData
+      );
+      return response;
     } catch (error) {
       console.log(error);
       return false;

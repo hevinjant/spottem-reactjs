@@ -4,8 +4,9 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import ReactionItem from "../components/ReactionItem";
 import SongHistory from "../components/SongHistory";
-import "../styles/Activity.css";
 import { backendEndpoint } from "../Data";
+import convertEmail from "../util";
+import "../styles/Activity.css";
 
 const dummyData = [
   {
@@ -223,14 +224,15 @@ const dummyData = [
 function Activity() {
   const [history, setHistory] = useState([]);
   let historyData = [];
+  const userEmail = convertEmail(localStorage.getItem("user_email"));
 
   useEffect(() => {
     fetchReactionsHistory().then((result) => {
       if (result) {
         historyData = result.filter((reaction) => {
           if (
-            reaction.sender_email === "hevin-jant@gmail-com" ||
-            reaction.email === "hevin-jant@gmail-com"
+            reaction.sender_email === userEmail ||
+            reaction.email === userEmail
           ) {
             // convert String date to date object
             const date = Date.parse(reaction.time_stamp);
@@ -244,7 +246,12 @@ function Activity() {
         historyData.sort((a, b) => b.time_stamp - a.time_stamp);
         setHistory(historyData);
       }
-    });
+
+      // clean up useEffect
+      return () => {
+        setHistory({});
+      };
+    }, []);
 
     // historyData = dummyData.filter((reaction) => {
     //   if (
@@ -263,7 +270,6 @@ function Activity() {
       const response = await axios.get(
         "http://localhost:8080/" + backendEndpoint + "/reactions"
       );
-      console.log("ACTIVITY RESPONSE: ", response.data["reactions"]);
       return response.data["reactions"];
     } catch (error) {
       console.log(error);
