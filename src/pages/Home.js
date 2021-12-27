@@ -6,6 +6,7 @@ import SongList from "../components/SongList";
 import FriendsList from "../components/FriendsList";
 import CurrentTrack from "../components/CurrentTrack";
 import { backendEndpoint } from "../Data";
+import convertEmail from "../util";
 import { useSelector } from "react-redux";
 import "../styles/Home.css";
 
@@ -409,6 +410,7 @@ function Home() {
   //const token = useLocation().state; // using useNavigate
   //const token = useSelector((state) => state.access_token); // using redux
   const token = localStorage.getItem("access_token"); // using localStorage
+  const userEmail = convertEmail(localStorage.getItem("user_email"));
 
   useEffect(() => {
     //setfriends(dummyData);
@@ -430,13 +432,44 @@ function Home() {
       const response = await axios.get(
         "http://localhost:8080/" +
           backendEndpoint +
-          "/user/friends/hevin-jant@gmail-com"
+          "/user/friends/" +
+          userEmail
       );
       return response.data["friends"];
     } catch (error) {
       console.log(error);
       return false;
     }
+  }
+
+  async function addFriendToDatabase(friendEmail) {
+    try {
+      const newFriendJson = {
+        email: userEmail,
+        friend_email: friendEmail,
+      };
+      const response = await axios.post(
+        "http://localhost:8080/" +
+          backendEndpoint +
+          "/user/friends/" +
+          userEmail,
+        newFriendJson
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  function handleAddFriend(email) {
+    addFriendToDatabase(email).then((result) => {
+      if (result) {
+        if (result.status === 201) {
+          setFriends([...friends, result.data["new_friend"]]);
+        }
+      }
+    });
   }
 
   return (
@@ -450,7 +483,7 @@ function Home() {
           <SongList friends={friends} />
         </div>
         <div className="home-right">
-          <FriendsList friends={friends} />
+          <FriendsList friends={friends} handleFormSubmit={handleAddFriend} />
         </div>
       </div>
     </>

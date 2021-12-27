@@ -76,7 +76,7 @@ function SongItem({ friend }) {
       const response = await axios.get(reactionsRequestUrl);
       return response;
     } catch (error) {
-      console.log(error);
+      console.log("No reaction found. ", error);
       return false;
     }
   }

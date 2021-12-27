@@ -1,4 +1,4 @@
-form {
+/* form {
   display: flex;
   flex-direction: column;
   width: clamp(250px, 20vw, 500px);
@@ -33,4 +33,4 @@ input:hover {
 input:focus {
   outline: none;
   border-bottom: 2px solid blue;
-}
+} */

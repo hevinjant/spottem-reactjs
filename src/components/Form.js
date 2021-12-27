@@ -11,7 +11,6 @@ function Form({ formLabel, placeholder, handleFormSubmit }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(input);
     handleFormSubmit(input);
     setinput("");
   };
