@@ -99,11 +99,11 @@ function SongItem({ friend }) {
       <SongElements song={currentSong} />
       {isLiked ? (
         <button onClick={handleUnlike}>
-          <FavoriteIcon />
+          <FavoriteIcon fontSize="large" />
         </button>
       ) : (
         <button onClick={handleLike}>
-          <FavoriteBorderIcon />
+          <FavoriteBorderIcon fontSize="large" />
         </button>
       )}
     </div>

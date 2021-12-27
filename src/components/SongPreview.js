@@ -9,11 +9,11 @@ function SongPreview({ previewUrl }) {
     <div className="song-preview">
       {playing ? (
         <button className="pause-button" onClick={toggle}>
-          <PauseCircleIcon />
+          <PauseCircleIcon fontSize="large" />
         </button>
       ) : (
         <button className="play-button" onClick={toggle}>
-          <PlayCircleIcon />
+          <PlayCircleIcon fontSize="large" />
         </button>
       )}
     </div>
