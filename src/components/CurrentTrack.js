@@ -103,9 +103,7 @@ function CurrentTrack({ token }) {
       <div
         className="background"
         style={{ backgroundImage: `url(${currentTrack.song_image_url})` }}
-      >
-        HELLO
-      </div>
+      ></div>
       <div className="update">
         <text>Update what you are listening to</text>
         <button onClick={updateCurrentTrack}>Update</button>

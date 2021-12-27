@@ -58,3 +58,14 @@
   letter-spacing: 1px;
   margin-bottom: 0px;
 }
+
+.song-item button {
+  background-color: transparent;
+  border: none;
+  color: var(--lightest-gray);
+  margin-top: 5px;
+}
+
+.song-item button:hover {
+  color: red;
+}

@@ -7,7 +7,9 @@ function ReactionItem({ reaction }) {
     if (reaction.sender_email === "hevin-jant@gmail-com") {
       return (
         <div className="reaction-info">
-          <text>You liked {reaction.name}'s song</text>
+          <text>
+            You liked <strong>{reaction.name}</strong>'s song
+          </text>
           <div className="song-info">
             <SongElements
               song_image_url={reaction.song_image_url}
@@ -20,7 +22,9 @@ function ReactionItem({ reaction }) {
     } else {
       return (
         <div className="reaction-info">
-          <text>{reaction.sender_name} liked your song</text>
+          <text>
+            <strong>{reaction.sender_name}</strong> liked your song
+          </text>
           <SongElements
             song_image_url={reaction.song_image_url}
             song_name={reaction.song_name}
