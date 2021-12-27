@@ -1,0 +1,21 @@
+.song-elements {
+  position: relative;
+}
+
+.song-elements .song-preview-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.song-elements button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  opacity: 75%;
+  margin-bottom: 50%;
+}

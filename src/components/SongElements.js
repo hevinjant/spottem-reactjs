@@ -1,11 +1,16 @@
 import React from "react";
+import SongPreview from "./SongPreview";
+import "../styles/SongElements.css";
 
-function SongElements({ song_image_url, song_name, artist }) {
+function SongElements({ song }) {
   return (
     <div className="song-elements">
-      <img src={song_image_url} alt="no image" />
-      <text className="name">{song_name}</text>
-      <text className="artist">{artist}</text>
+      <img src={song.song_image_url} alt="no image" />
+      <text className="name">{song.song_name}</text>
+      <text className="artist">{song.artist}</text>
+      <div className="song-preview-container">
+        <SongPreview previewUrl={song.preview_url} />
+      </div>
     </div>
   );
 }

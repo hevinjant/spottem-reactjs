@@ -52,6 +52,7 @@ function CurrentTrack({ token }) {
       artistsNames = artistsNames.slice(0, -2); // to remove the last comma and space
       const songImageUrl = result["item"]["album"]["images"][0]["url"];
       const songLink = result["item"]["external_urls"]["spotify"];
+      const previewUrl = result["item"]["preview_url"];
 
       const newCurrentTrack = {
         song_album: "",
@@ -61,6 +62,7 @@ function CurrentTrack({ token }) {
         song_image_url: songImageUrl,
         song_name: songName,
         song_url: songLink,
+        preview_url: previewUrl,
       };
 
       return newCurrentTrack;
@@ -111,11 +113,7 @@ function CurrentTrack({ token }) {
       <div className="song-info" id={isListening ? "show" : "hide"}>
         <div className="song-info-container">
           <text className="label">You listen to</text>
-          <SongElements
-            song_image_url={currentTrack.song_image_url}
-            song_name={currentTrack.song_name}
-            artist={currentTrack.song_artists}
-          />
+          <SongElements song={currentTrack} />
         </div>
       </div>
     </div>

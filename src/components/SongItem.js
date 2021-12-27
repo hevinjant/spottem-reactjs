@@ -94,11 +94,7 @@ function SongItem({ friend }) {
           <strong>{friend.name}</strong> listens to
         </text>
       </div>
-      <SongElements
-        song_image_url={currentSong.song_image_url}
-        song_name={currentSong.song_name}
-        artist={currentSong.artist}
-      />
+      <SongElements song={currentSong} />
       {isLiked ? (
         <button onClick={handleUnlike}>
           <FavoriteIcon />

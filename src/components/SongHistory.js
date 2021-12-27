@@ -35,14 +35,7 @@ function SongHistory() {
     <div className="song-history">
       <div className="song-history-list">
         {songHistory.map((song, key) => {
-          return (
-            <SongElements
-              key={key}
-              song_image_url={song.song_image_url}
-              song_name={song.song_name}
-              artist={song.artist}
-            />
-          );
+          return <SongElements key={key} song={song} />;
         })}
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/ReactionItem.css";
 import SongElements from "./SongElements";
+import "../styles/ReactionItem.css";
 
 function ReactionItem({ reaction }) {
   function ReactionDirection({ reaction }) {
@@ -11,11 +11,7 @@ function ReactionItem({ reaction }) {
             You liked <strong>{reaction.name}</strong>'s song
           </text>
           <div className="song-info">
-            <SongElements
-              song_image_url={reaction.song_image_url}
-              song_name={reaction.song_name}
-              artist={reaction.artist}
-            />
+            <SongElements song={reaction} />
           </div>
         </div>
       );
@@ -25,11 +21,9 @@ function ReactionItem({ reaction }) {
           <text>
             <strong>{reaction.sender_name}</strong> liked your song
           </text>
-          <SongElements
-            song_image_url={reaction.song_image_url}
-            song_name={reaction.song_name}
-            artist={reaction.artist}
-          />
+          <div className="song-info">
+            <SongElements song={reaction} />
+          </div>
         </div>
       );
     }

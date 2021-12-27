@@ -35,15 +35,14 @@ function Login() {
         localStorage.setItem("user_name", result.display_name);
         localStorage.setItem("user_email", result.email);
         localStorage.setItem("user_image_url", result.user_image_url);
+        localStorage.setItem("access_token", token); // store access token in user's local machine
+        navigate("/home");
       }
     });
 
-    // store access token in redux store
-    // store.dispatch(setAccessToken(token));
+    // store.dispatch(setAccessToken(token)); // store access token in redux store
 
-    localStorage.setItem("access_token", token); // store access token in user's local machine
-    //navigate("/home", { state: token }); // passing data to another page using useNavigate
-    navigate("/home");
+    //navigate("/home", {state: { access_token: token, email: result.email },}); // passing data to another page using useNavigate
   }
 
   async function fetchUserInfo() {
