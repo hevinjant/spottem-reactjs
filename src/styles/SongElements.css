@@ -1,9 +1,4 @@
-.song-elements {
-  position: relative;
-}
-
 .song-elements .song-preview-container {
-  position: absolute;
   height: 100%;
   width: 100%;
   display: flex;
@@ -17,5 +12,4 @@
   border: none;
   color: white;
   opacity: 75%;
-  margin-bottom: 50%;
 }

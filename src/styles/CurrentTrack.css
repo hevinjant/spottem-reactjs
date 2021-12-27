@@ -92,5 +92,8 @@
   color: var(--lightest-gray);
   font-size: clamp(12px, 0.7vw, 17px);
   letter-spacing: 1px;
-  margin-bottom: 0px;
+}
+
+.current-track .song-preview button {
+  display: none;
 }

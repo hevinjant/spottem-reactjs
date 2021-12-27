@@ -100,6 +100,8 @@ function CurrentTrack({ token }) {
     });
   }
 
+  console.log("CURRENT TRACK:", currentTrack);
+
   return (
     <div className="current-track">
       <div

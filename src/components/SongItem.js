@@ -7,6 +7,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import DefaultPic from "../assets/defaultPic.png";
 import axios from "axios";
 import "../styles/SongItem.css";
+import { current } from "@reduxjs/toolkit";
 
 function SongItem({ friend }) {
   const [isLiked, setIsLiked] = useState(false);
@@ -51,6 +52,7 @@ function SongItem({ friend }) {
         song_album: currentSong.album,
         song_url: currentSong.song_url,
         song_image_url: currentSong.song_image_url,
+        preview_url: currentSong.preview_url,
         time_stamp: "",
       };
       const response = await axios.post(reactionsRequestUrl, reaction);
