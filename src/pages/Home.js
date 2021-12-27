@@ -411,6 +411,8 @@ function Home() {
   //const token = useSelector((state) => state.access_token); // using redux
   const token = localStorage.getItem("access_token"); // using localStorage
   const userEmail = convertEmail(localStorage.getItem("user_email"));
+  const userFriendUrl =
+    "http://localhost:8080/" + backendEndpoint + "/user/friends/" + userEmail;
 
   useEffect(() => {
     //setfriends(dummyData);
@@ -429,12 +431,7 @@ function Home() {
 
   async function fetchAllfriends() {
     try {
-      const response = await axios.get(
-        "http://localhost:8080/" +
-          backendEndpoint +
-          "/user/friends/" +
-          userEmail
-      );
+      const response = await axios.get(userFriendUrl);
       return response.data["friends"];
     } catch (error) {
       console.log(error);
@@ -448,13 +445,24 @@ function Home() {
         email: userEmail,
         friend_email: friendEmail,
       };
-      const response = await axios.post(
-        "http://localhost:8080/" +
-          backendEndpoint +
-          "/user/friends/" +
-          userEmail,
-        newFriendJson
-      );
+      const response = await axios.post(userFriendUrl, newFriendJson);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  async function removeFriendFromDatabase(friendEmail) {
+    try {
+      const newFriendJson = {
+        email: userEmail,
+        friend_email: friendEmail,
+      };
+      // note: axios.delete() request shouldn't have request body, but to put body anyway do {data: json_data}
+      const response = await axios.delete(userFriendUrl, {
+        data: newFriendJson,
+      });
       return response;
     } catch (error) {
       console.log(error);
@@ -472,6 +480,19 @@ function Home() {
     });
   }
 
+  function handleRemoveFriend(email) {
+    removeFriendFromDatabase(email).then((result) => {
+      if (result) {
+        if (result.status === 204) {
+          const updatedFriends = friends.filter((friend) => {
+            return friend.email !== email;
+          });
+          setFriends(updatedFriends);
+        }
+      }
+    });
+  }
+
   return (
     <>
       <Navbar />
@@ -483,7 +504,11 @@ function Home() {
           <SongList friends={friends} />
         </div>
         <div className="home-right">
-          <FriendsList friends={friends} handleFormSubmit={handleAddFriend} />
+          <FriendsList
+            friends={friends}
+            handleAddFriend={handleAddFriend}
+            handleRemoveFriend={handleRemoveFriend}
+          />
         </div>
       </div>
     </>

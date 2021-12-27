@@ -4,7 +4,7 @@ import Form from "./Form";
 function AddFriend(props) {
   function handleFormSubmit(email) {
     // make post request to add new friend
-    props.handleFormSubmit(email);
+    props.handleAddFriend(email);
   }
 
   return (

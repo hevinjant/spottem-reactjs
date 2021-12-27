@@ -65,7 +65,7 @@ function CurrentTrack({ token }) {
 
       return newCurrentTrack;
     } catch (error) {
-      console.log("Failed to fetch current track: ", error);
+      console.log("No current track is playing: ", error);
       setIsListening(false);
       return false;
     }
