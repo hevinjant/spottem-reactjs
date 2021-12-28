@@ -91,7 +91,7 @@ function Login() {
           ) : (
             // Display the login page
             <SpotifyAuth
-              redirectUri="http://localhost:3000/callback"
+              redirectUri="https://spottem-reactjs.herokuapp.com/callback"
               clientID="8ad10722bf9f4c539591db26b5ae4abc"
               scopes={[
                 Scopes.userReadPrivate,
