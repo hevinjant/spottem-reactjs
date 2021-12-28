@@ -43,11 +43,20 @@
   font-size: clamp(15px, 1.1vw, 17px);
   border: none;
   width: auto;
-  height: 30px;
+  height: auto;
   padding: 5px 8px 5px 8px;
   border-radius: 2.5px;
 }
 
 .login button:hover {
   background-color: blue;
+}
+
+.login a {
+  color: white;
+  margin: 30px;
+}
+
+.login a:hover {
+  color: blue;
 }

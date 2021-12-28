@@ -1,5 +1,4 @@
 .about {
-  background-color: var(--darkest-gray);
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -80,7 +80,6 @@ function Login() {
     <div className="login" style={{ backgroundImage: `url(${Background})` }}>
       <div className="login-inner-container">
         <img src={SpottemLogo}></img>
-
         <div className="spotify-oauth">
           {token ? (
             <SpotifyApiContext.Provider value={token}>
@@ -105,6 +104,9 @@ function Login() {
             />
           )}
         </div>
+        <a className="about-app" href="/guest">
+          About this app
+        </a>
       </div>
     </div>
   );

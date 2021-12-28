@@ -21,11 +21,11 @@ function AppInfo() {
           </a>
         </div>
         <div className="feature">
-          <p className="header">Feature</p>
+          <p className="header">Features</p>
           <p className="feature">
             - Spotify OAuth log in <br />
             - Update and show your current playing song <br />
-            - See what song others listen to <br />
+            - See what songs others listen to <br />
             - Like and unlike other people songs <br />
             - Add and remove friends <br />
             - See your song history <br />

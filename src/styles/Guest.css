@@ -1,0 +1,27 @@
+.guest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 55px;
+  height: auto;
+}
+
+.guest .logo {
+  width: clamp(150px, 10vw, 200px);
+  border-radius: 50%;
+}
+
+.guest .back-to-login {
+  color: white;
+  text-decoration: none;
+  background-color: green;
+  border-radius: 5px;
+  padding: 10px 25px 10px 25px;
+  font-size: clamp(15px, 1vw, 20px);
+  font-weight: 700;
+  margin-bottom: 100px;
+}
+
+.guest .back-to-login:hover {
+  background-color: blue;
+}
