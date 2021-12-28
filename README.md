@@ -1,3 +1,7 @@
+# Visit Spottem
+
+https://agile-wave-10181.herokuapp.com/
+
 # Overview
 
 Spottem is a music-based social media. The goal of the project was to create a socially interactive Spotify experience where users can add friends who are Spotify users and see what music they are listening to in real time. It also gives the feature of interacting with friend's music and 'reacting (ex. giving like)' to individual songs.
