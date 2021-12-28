@@ -4,7 +4,7 @@ import { backendEndpoint } from "../Data";
 import convertEmail from "../util.js";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import DefaultPic from "../assets/defaultPic.png";
+import defaultDp from "../assets/defaultPic2.jpeg";
 import axios from "axios";
 import "../styles/SongItem.css";
 
@@ -82,12 +82,11 @@ function SongItem({ friend }) {
   return (
     <div className="song-item">
       <div className="user-info">
-        <img
-          className="userdp"
-          src={friend.user_dp}
-          onError={() => (this.img.src = "../assets/defaultPic.png")}
-          alt="display picture"
-        />
+        {friend.user_dp ? (
+          <img className="userdp" src={friend.user_dp} alt="no image" />
+        ) : (
+          <img className="userdp" src={defaultDp} alt="no image" />
+        )}
         <text className="name">
           <strong>{friend.name}</strong> listens to
         </text>
