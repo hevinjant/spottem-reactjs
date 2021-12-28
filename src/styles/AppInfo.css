@@ -26,6 +26,10 @@
   font-size: 15px;
 }
 
+.app-info a:hover {
+  color: var(--spotify-green);
+}
+
 .app-info .feature {
   width: 50vw;
   color: white;

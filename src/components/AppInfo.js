@@ -26,6 +26,7 @@ function AppInfo() {
             - Spotify OAuth log in <br />
             - Update and show your current playing song <br />
             - See what songs others listen to <br />
+            - Listen the preview of your friends' songs <br />
             - Like and unlike other people songs <br />
             - Add and remove friends <br />
             - See your song history <br />
