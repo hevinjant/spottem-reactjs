@@ -9,7 +9,7 @@ import "../styles/SongHistory.css";
 function SongHistory() {
   const [songHistory, setSongHistory] = useState([]);
   const userEmail = convertEmail(localStorage.getItem("user_email"));
-  const endpoint = `http://localhost:8080/${backendEndpoint}/user/${userEmail}`;
+  const endpoint = `${backendEndpoint}/user/${userEmail}`;
 
   useEffect(() => {
     fetchSongHistory().then((result) => {

@@ -13,7 +13,7 @@ function CurrentTrack({ token }) {
   const [currentTrack, setCurrentTrack] = useState({});
   const [isListening, setIsListening] = useState(false);
   const userEmail = convertEmail(localStorage.getItem("user_email"));
-  const endpoint = `http://localhost:8080/${backendEndpoint}/current-track/${userEmail}`;
+  const endpoint = `${backendEndpoint}/current-track/${userEmail}`;
 
   useEffect(() => {
     fetchCurrentTrack().then((result) => {

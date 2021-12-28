@@ -23,7 +23,7 @@ function Login() {
   const [token, setToken] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const endpoint = `http://localhost:8080/${backendEndpoint}/user/`; // + email
+  const endpoint = `${backendEndpoint}/user/`; // + email
 
   function handleClick() {
     fetchUserInfo().then((result) => {

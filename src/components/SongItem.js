@@ -12,7 +12,7 @@ function SongItem({ friend }) {
   const [isLiked, setIsLiked] = useState(false);
   const userEmail = convertEmail(localStorage.getItem("user_email"));
   const currentSong = friend.current_track;
-  const endpoint = `http://localhost:8080/${backendEndpoint}/reactions/${userEmail}/${currentSong.song_id}`;
+  const endpoint = `${backendEndpoint}/reactions/${userEmail}/${currentSong.song_id}`;
 
   useEffect(() => {
     checkLike().then((result) => {

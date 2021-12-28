@@ -12,7 +12,7 @@ function Activity() {
   const [history, setHistory] = useState([]);
   let historyData = [];
   const userEmail = convertEmail(localStorage.getItem("user_email"));
-  const endpoint = `http://localhost:8080/${backendEndpoint}/reactions`;
+  const endpoint = `${backendEndpoint}/reactions`;
 
   useEffect(() => {
     fetchReactionsHistory().then((result) => {

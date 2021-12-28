@@ -411,7 +411,7 @@ function Home() {
   //const token = useSelector((state) => state.access_token); // using redux
   const token = localStorage.getItem("access_token"); // using localStorage
   const userEmail = convertEmail(localStorage.getItem("user_email"));
-  const endpoint = `http://localhost:8080/${backendEndpoint}/user/friends/${userEmail}`;
+  const endpoint = `${backendEndpoint}/user/friends/${userEmail}`;
 
   useEffect(() => {
     //setfriends(dummyData);
