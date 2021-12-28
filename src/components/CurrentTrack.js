@@ -56,7 +56,7 @@ function CurrentTrack({ token }) {
 
       return newCurrentTrack;
     } catch (error) {
-      console.log("No current track is playing: ", error);
+      //console.log("User is not playing any song: ", error);
       setIsListening(false);
       return false;
     }
