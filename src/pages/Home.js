@@ -411,8 +411,7 @@ function Home() {
   //const token = useSelector((state) => state.access_token); // using redux
   const token = localStorage.getItem("access_token"); // using localStorage
   const userEmail = convertEmail(localStorage.getItem("user_email"));
-  const userFriendUrl =
-    "http://localhost:8080/" + backendEndpoint + "/user/friends/" + userEmail;
+  const endpoint = `http://localhost:8080/${backendEndpoint}/user/friends/${userEmail}`;
 
   useEffect(() => {
     //setfriends(dummyData);
@@ -431,7 +430,7 @@ function Home() {
 
   async function fetchAllfriends() {
     try {
-      const response = await axios.get(userFriendUrl);
+      const response = await axios.get(endpoint);
       return response.data["friends"];
     } catch (error) {
       console.log(error);
@@ -445,7 +444,7 @@ function Home() {
         email: userEmail,
         friend_email: friendEmail,
       };
-      const response = await axios.post(userFriendUrl, newFriendJson);
+      const response = await axios.post(endpoint, newFriendJson);
       return response;
     } catch (error) {
       console.log(error);
@@ -460,7 +459,7 @@ function Home() {
         friend_email: friendEmail,
       };
       // note: axios.delete() request shouldn't have request body, but to put body anyway do {data: json_data}
-      const response = await axios.delete(userFriendUrl, {
+      const response = await axios.delete(endpoint, {
         data: newFriendJson,
       });
       return response;

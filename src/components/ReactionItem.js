@@ -1,10 +1,13 @@
 import React from "react";
 import SongElements from "./SongElements";
 import "../styles/ReactionItem.css";
+import convertEmail from "../util";
 
 function ReactionItem({ reaction }) {
+  const userEmail = convertEmail(localStorage.getItem("user_email"));
+
   function ReactionDirection({ reaction }) {
-    if (reaction.sender_email === "hevin-jant@gmail-com") {
+    if (reaction.sender_email === userEmail) {
       return (
         <div className="reaction-info">
           <text>

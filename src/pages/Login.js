@@ -23,6 +23,7 @@ function Login() {
   const [token, setToken] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const endpoint = `http://localhost:8080/${backendEndpoint}/user/`; // + email
 
   function handleClick() {
     fetchUserInfo().then((result) => {
@@ -67,10 +68,7 @@ function Login() {
   async function insertUserToBackend(userData) {
     try {
       const email = convertEmail(userData["email"]);
-      const response = await axios.post(
-        "http://localhost:8080/" + backendEndpoint + "/user/" + email,
-        userData
-      );
+      const response = await axios.post(endpoint + `/${email}`, userData);
       return response;
     } catch (error) {
       console.log(error);

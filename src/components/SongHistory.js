@@ -9,6 +9,7 @@ import "../styles/SongHistory.css";
 function SongHistory() {
   const [songHistory, setSongHistory] = useState([]);
   const userEmail = convertEmail(localStorage.getItem("user_email"));
+  const endpoint = `http://localhost:8080/${backendEndpoint}/user/${userEmail}`;
 
   useEffect(() => {
     fetchSongHistory().then((result) => {
@@ -21,9 +22,7 @@ function SongHistory() {
 
   async function fetchSongHistory() {
     try {
-      const response = await axios.get(
-        "http://localhost:8080/" + backendEndpoint + "/user/" + userEmail
-      );
+      const response = await axios.get(endpoint);
       return response.data["user"]["song_history"];
     } catch (error) {
       console.log(error);

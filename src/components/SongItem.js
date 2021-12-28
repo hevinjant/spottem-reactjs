@@ -7,19 +7,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import DefaultPic from "../assets/defaultPic.png";
 import axios from "axios";
 import "../styles/SongItem.css";
-import { current } from "@reduxjs/toolkit";
 
 function SongItem({ friend }) {
   const [isLiked, setIsLiked] = useState(false);
   const userEmail = convertEmail(localStorage.getItem("user_email"));
   const currentSong = friend.current_track;
-  const reactionsRequestUrl =
-    "http://localhost:8080/" +
-    backendEndpoint +
-    "/reactions/" +
-    userEmail +
-    "/" +
-    currentSong.song_id;
+  const endpoint = `http://localhost:8080/${backendEndpoint}/reactions/${userEmail}/${currentSong.song_id}`;
 
   useEffect(() => {
     checkLike().then((result) => {
@@ -43,6 +36,9 @@ function SongItem({ friend }) {
 
   async function insertReactionToDatabase() {
     try {
+      const now = Date.now();
+      const timestamp = new Date(now);
+
       const reaction = {
         email: currentSong.email,
         sender_email: userEmail,
@@ -53,9 +49,9 @@ function SongItem({ friend }) {
         song_url: currentSong.song_url,
         song_image_url: currentSong.song_image_url,
         preview_url: currentSong.preview_url,
-        time_stamp: "",
+        time_stamp: timestamp.toString(),
       };
-      const response = await axios.post(reactionsRequestUrl, reaction);
+      const response = await axios.post(endpoint, reaction);
       return response;
     } catch (error) {
       console.log(error);
@@ -65,7 +61,7 @@ function SongItem({ friend }) {
 
   async function removeReactionFromDatabase() {
     try {
-      const response = await axios.delete(reactionsRequestUrl);
+      const response = await axios.delete(endpoint);
       return response;
     } catch (error) {
       console.log(error);
@@ -75,7 +71,7 @@ function SongItem({ friend }) {
 
   async function checkLike() {
     try {
-      const response = await axios.get(reactionsRequestUrl);
+      const response = await axios.get(endpoint);
       return response;
     } catch (error) {
       console.log("No reaction found. ", error);

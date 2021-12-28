@@ -9,24 +9,13 @@ import "../styles/CurrentTrack.css";
 const SPOTIFY_GET_CURRENT_TRACK_URL =
   "https://api.spotify.com/v1/me/player/currently-playing";
 
-const dummyData = {
-  album: "",
-  artists: "Lana Del Rey",
-  email: "travisphawley@gmail-com",
-  song_id: "487OPlneJNni3NWC8SYqhW",
-  image_url: "https://i.scdn.co/image/ab67616d0000b273cb76604d9c5963544cf5be64",
-  track_name: "Born To Die",
-  song_url: "https://open.spotify.com/track/487OPlneJNni3NWC8SYqhW",
-};
-
 function CurrentTrack({ token }) {
   const [currentTrack, setCurrentTrack] = useState({});
   const [isListening, setIsListening] = useState(false);
   const userEmail = convertEmail(localStorage.getItem("user_email"));
+  const endpoint = `http://localhost:8080/${backendEndpoint}/current-track/${userEmail}`;
 
   useEffect(() => {
-    //setCurrentTrack(dummyData);
-
     fetchCurrentTrack().then((result) => {
       if (result) {
         setCurrentTrack(result);
@@ -76,13 +65,7 @@ function CurrentTrack({ token }) {
   async function pushCurrentTrackToDatabase(newCurrentTrack) {
     // make POST request to the backend to insert the new current track
     try {
-      const response = await axios.post(
-        "http://localhost:8080/" +
-          backendEndpoint +
-          "/current-track/" +
-          userEmail,
-        newCurrentTrack
-      );
+      const response = await axios.post(endpoint, newCurrentTrack);
       return response;
     } catch (error) {
       console.log(error);

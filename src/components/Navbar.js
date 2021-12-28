@@ -7,9 +7,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import store from "../redux/store";
 import "../styles/Navbar.css";
 
-const dummyData = {};
-
-const SPOTIFY_GET_USER_PROFILE_URL = "https://api.spotify.com/v1/me";
+//const SPOTIFY_GET_USER_PROFILE_URL = "https://api.spotify.com/v1/me";
 
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
