@@ -67,5 +67,5 @@
 }
 
 .song-item button:hover {
-  color: red;
+  color: var(--spotify-green);
 }

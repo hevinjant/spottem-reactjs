@@ -38,7 +38,7 @@
 }
 
 .login button {
-  background-color: green;
+  background-color: var(--spotify-green);
   color: white;
   font-size: clamp(15px, 1.1vw, 17px);
   border: none;
@@ -49,7 +49,7 @@
 }
 
 .login button:hover {
-  background-color: blue;
+  background-color: var(--app-blue);
 }
 
 .login a {
@@ -58,5 +58,5 @@
 }
 
 .login a:hover {
-  color: blue;
+  color: var(--app-blue);
 }

@@ -33,7 +33,7 @@
 }
 
 .update button {
-  background-color: green;
+  background-color: var(--spotify-green);
   color: white;
   font-weight: 700;
   width: 8vw;
@@ -44,7 +44,7 @@
 }
 
 .update button:hover {
-  background-color: blue;
+  background-color: var(--app-blue);
 }
 
 .current-track .song-info {

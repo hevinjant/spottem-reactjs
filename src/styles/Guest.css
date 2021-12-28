@@ -14,7 +14,7 @@
 .guest .back-to-login {
   color: white;
   text-decoration: none;
-  background-color: green;
+  background-color: var(--spotify-green);
   border-radius: 5px;
   padding: 10px 25px 10px 25px;
   font-size: clamp(15px, 1vw, 20px);
@@ -23,5 +23,5 @@
 }
 
 .guest .back-to-login:hover {
-  background-color: blue;
+  background-color: var(--app-blue);
 }

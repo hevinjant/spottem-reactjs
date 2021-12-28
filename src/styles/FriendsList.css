@@ -30,7 +30,7 @@
   height: 50px;
   width: 100%;
   border: none;
-  border-bottom: 1px solid green;
+  border-bottom: 1px solid var(--spotify-green);
   color: white;
   font-size: clamp(15px, 1vw, 20px);
 }
@@ -40,10 +40,10 @@
 }
 
 .friends-list input:hover {
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid var(--app-blue);
 }
 
 .friends-list input:focus {
   outline: none;
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid var(--app-blue);
 }
