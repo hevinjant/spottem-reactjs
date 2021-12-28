@@ -4,8 +4,6 @@ Spottem was a class project and the idea behind it came from Aiden Nguyen, Limas
 
 After the class was over, I decided to develop my own version of front-end using React JavaScript as my personal project. Some modification was also being done to the back-end part to conform to the new design in React JavaScript.
 
-Back-end GitHub: https://github.com/hevinjant/spottem-reactjs-backend
-
 Feature:
 
 - Spotify OAuth log in
@@ -16,3 +14,7 @@ Feature:
 - Add and remove friends
 - See your song history
 - See recent activity
+
+Front-end: React JavaScript
+Back-end: Python Flask (Back-end GitHub: https://github.com/hevinjant/spottem-reactjs-backend)
+Deployed to Heroku, data managed with Atlas MongoDB database.
