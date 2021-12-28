@@ -1,6 +1,6 @@
 # Visit Spottem
 
-https://agile-wave-10181.herokuapp.com/
+https://spottem-reactjs.herokuapp.com/
 
 # Overview
 
