@@ -51,6 +51,7 @@
   .home-mid {
     border-left: none;
     border-top: 1px solid var(--darker-gray);
+    z-index: 1;
   }
 
   .home-right {
