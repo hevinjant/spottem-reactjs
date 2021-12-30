@@ -31,33 +31,6 @@ function Navbar() {
 
   unsubscribe();
 
-  /*
-  useEffect(() => {
-    fetchUser().then((result) => {
-      if (result) {
-        setUser(result);
-      }
-    });
-  }, []);
-
-  async function fetchUser() {
-    try {
-      const response = await axios.get(SPOTIFY_GET_USER_PROFILE_URL, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const result = response.data;
-      const user = {
-        display_name: result["display_name"],
-        user_image_url: result["images"][0]["url"],
-      };
-      return user;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
-*/
-
   const toggleNavbar = () => {
     setShowLinks(!showLinks);
   };

@@ -9,16 +9,6 @@ function useAudio(url) {
   };
 
   useEffect(() => {
-    //   if (playing) {
-    //       if (audio.paused && !playing) {
-    //           audio.play()
-    //       }
-    //   }
-    //   else {
-    //       if (!audio.paused && playing) {
-    //           audio.pause()
-    //       }
-    //   }
     playing ? audio.play() : audio.pause();
   }, [playing]);
 
