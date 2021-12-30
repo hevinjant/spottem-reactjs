@@ -50,7 +50,6 @@
 
   .home-mid {
     border-left: none;
-    border-top: 1px solid var(--darker-gray);
     width: 100vw;
     z-index: 1;
   }
