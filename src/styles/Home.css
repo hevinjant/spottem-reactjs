@@ -44,6 +44,7 @@
   }
 
   .home-left {
+    margin-bottom: 20px;
   }
 
   .home-mid {
@@ -52,7 +53,6 @@
   }
 
   .home-right {
-    border-left: none;
-    border-top: 1px solid var(--darker-gray);
+    display: none;
   }
 }
