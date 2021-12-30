@@ -98,3 +98,16 @@
 .current-track .song-preview button {
   display: none;
 }
+
+@media only screen and (max-width: 1125px) {
+  .current-track .background {
+    width: 70vw;
+    height: 100%;
+  }
+
+  .current-track .song-info img {
+    width: 50%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+}
