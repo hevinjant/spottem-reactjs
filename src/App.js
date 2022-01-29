@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Activity from "./pages/Activity";
 import About from "./pages/About";
 import Guest from "./pages/Guest";
+import FailedLogin from "./pages/FailedLogin";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/about" exact element={<About />} />;
         <Route path="/guest" exact element={<Guest />} />;
         <Route path="/callback" exact element={<Login />} />;
+        <Route path="/fail-login" exact element={<FailedLogin />} />;
       </Routes>
     </div>
   );
