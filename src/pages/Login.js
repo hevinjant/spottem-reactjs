@@ -18,6 +18,8 @@ import { useDispatch } from "react-redux";
 import { setAccessToken, setUserInfo } from "../redux/action";
 
 const SPOTIFY_GET_USER_PROFILE_URL = "https://api.spotify.com/v1/me";
+//const redirectURL = "https://spottem-reactjs.herokuapp.com/callback"
+const redirectURL = "http://localhost:3000/callback";
 
 function Login() {
   const [token, setToken] = useState("");
@@ -91,7 +93,7 @@ function Login() {
           ) : (
             // Display the login page
             <SpotifyAuth
-              redirectUri="https://spottem-reactjs.herokuapp.com/callback"
+              redirectUri={redirectURL}
               clientID="8ad10722bf9f4c539591db26b5ae4abc"
               scopes={[
                 Scopes.userReadPrivate,
