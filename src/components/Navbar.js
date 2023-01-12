@@ -5,11 +5,13 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
 import store from "../redux/store";
+import { useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
 
 //const SPOTIFY_GET_USER_PROFILE_URL = "https://api.spotify.com/v1/me";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [showLinks, setShowLinks] = useState(false);
   const [user, setUser] = useState({
     userName: localStorage.getItem("user_name"),
@@ -35,6 +37,20 @@ function Navbar() {
     setShowLinks(!showLinks);
   };
 
+  const handleSignOut = () => {
+    localStorage.setItem("access_token", "");
+    navigate("/");
+  };
+
+  const navbarItems = (
+    <>
+      <Link to="/home">Home</Link>
+      <Link to="/activity">Activity</Link>
+      <Link to="/about">About</Link>
+      <Link to="/">Sign Out</Link>
+    </>
+  );
+
   return (
     <div className="navbar">
       <div className="navbar-left" id={showLinks ? "show" : "hide"}>
@@ -42,16 +58,10 @@ function Navbar() {
           <img src={user.userImage} alt="no img" />
           <text>{user.userName}</text>
         </div>
-        <div className="hiddenLinks">
-          <Link to="/home">Home</Link>
-          <Link to="/activity">Activity</Link>
-          <Link to="/about">About</Link>
-        </div>
+        <div className="hiddenLinks">{navbarItems}</div>
       </div>
       <div className="navbar-right">
-        <Link to="/home">Home</Link>
-        <Link to="/activity">Activity</Link>
-        <Link to="/about">About</Link>
+        {navbarItems}
         <button onClick={toggleNavbar}>
           <MenuIcon />
         </button>

@@ -18,8 +18,8 @@ import { useDispatch } from "react-redux";
 import { setAccessToken, setUserInfo } from "../redux/action";
 
 const SPOTIFY_GET_USER_PROFILE_URL = "https://api.spotify.com/v1/me";
-const redirectURL = "https://spottem-frontend.herokuapp.com/callback";
-// const redirectURL = "http://localhost:3000/callback";
+//const redirectURL = "https://spottem-frontend.herokuapp.com/callback";
+const redirectURL = "http://localhost:3000/callback";
 
 function Login() {
   const [token, setToken] = useState("");
@@ -103,6 +103,7 @@ function Login() {
                 Scopes.playlistReadPrivate,
               ]}
               onAccessToken={(token) => setToken(token)}
+              showDialog={true} // to always requires user to agree on the Spotify website
             />
           )}
         </div>
