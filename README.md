@@ -1,6 +1,6 @@
 # Visit Spottem
 
-https://spottem-reactjs.herokuapp.com/
+https://spottem-frontend.herokuapp.com/
 
 # Overview
 
