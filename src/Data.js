@@ -1,2 +1,2 @@
 // Back-end endpoint
-export const backendEndpoint = "https://spottem-reactjs-backend.herokuapp.com";
+export const backendEndpoint = "https://spottem-flask.herokuapp.com/";
