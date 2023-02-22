@@ -1,6 +1,6 @@
 # Visit Spottem
 
-https://spottem-frontend.herokuapp.com/
+Sorry! The web-app is currently offline.
 
 # Overview
 
